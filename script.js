@@ -1,5 +1,5 @@
 var images = ["img/drake.jpg", "img/jcole.jpg","img/nine.gif", "img/jayz.jpg", "img/kanye.gif", "img/logic.gif"];
-var audio = ["drake","jcole", "sixnine", "jayz", "kanye", "logic"]
+var audio = ["drake","jcole", "sixnine", "jayz", "kanye", "logic"];
 
 function start(size) {
 
@@ -15,7 +15,7 @@ function start(size) {
 
 }
 
-function presentData(){
+function processResults(){
 
         var size = document.getElementById("artistType").value;
 
@@ -42,6 +42,8 @@ function success(data) {
     //     data[i].remove();
     // }
 
+    // Apple Music Link:" + data.results[i].trackViewUrl
+
     console.log(data);
 
     var string = "";
@@ -51,6 +53,8 @@ function success(data) {
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Song Rank: " + data.results[i].trackNumber + "</td>";
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'>Artist Name:" + data.results[i].artistName + "</td>";
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Song Name:" + data.results[i].trackName + "</td>";
+            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Genre:" + data.results[i].primaryGenreName + "</td>";
+            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Status:" + data.results[i].trackExplicitness + "</td>";
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border' onclick=\"start();\"> Preview Url:<audio controls src='" + data.results[i].previewUrl + "'></td>";
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Album Name:" + data.results[i].collectionName + "</td>";
             string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Album Cover:<img src='" + data.results[i].artworkUrl100 + "'></td>";
@@ -69,6 +73,8 @@ function success(data) {
 
     $("#tableData").remove(string);
 
+// <p><a href="data.results[i].trackViewUrl" target="_blank">AppleMusicLink</a></p>
+//     href="https://www.w3schools.com" target="_blank">Visit W3Schools!
 }
 
 function getQueryParameter(name)
