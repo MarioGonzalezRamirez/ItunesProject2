@@ -48,16 +48,15 @@ function success(data) {
 
     var string = "";
         for(var i = 0; i < data.results.length ; i++){
+            var song = i + 1;
 
             string += "<tr>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Song Rank: " + data.results[i].trackNumber + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'>Artist Name:" + data.results[i].artistName + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Song Name:" + data.results[i].trackName + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Genre:" + data.results[i].primaryGenreName + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Status:" + data.results[i].trackExplicitness + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border' onclick=\"start();\"> Preview Url:<audio controls src='" + data.results[i].previewUrl + "'></td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Album Name:" + data.results[i].collectionName + "</td>";
-            string += "<td class=\"w3-container w3-center w3-animate-right\" id='border'> Album Cover:<img src='" + data.results[i].artworkUrl100 + "'></td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border'> Song Rank: " + song + "</td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border'>Artist Name:" + data.results[i].artistName + "</td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border'> Song Name: <a href='detail.html?song=" + i + "&artist=" + data.results[i].artistName +  "'>" + data.results[i].trackName + "</a></td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border' onclick='start();'> Preview Url:<audio controls src='" + data.results[i].previewUrl + "'></td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border'> Album Name:" + data.results[i].collectionName + "</td>";
+            string += "<td class='w3-container w3-center w3-animate-right' id='border'> Album Cover:<img src='" + data.results[i].artworkUrl100 + "'></td>";
             string += "</tr>";
 
     // document.getElementById("songRank").innerHTML = data.results[i].trackNumber
@@ -75,17 +74,6 @@ function success(data) {
 
 // <p><a href="data.results[i].trackViewUrl" target="_blank">AppleMusicLink</a></p>
 //     href="https://www.w3schools.com" target="_blank">Visit W3Schools!
-}
-
-function getQueryParameter(name)
-{
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
-        var pair = vars[i].split("=");
-        if(pair[0] == name){return pair[1];}
-    }
-    return false;
 }
 
 
