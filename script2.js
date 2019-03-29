@@ -23,10 +23,7 @@ function success(data) {
     var s = parseInt(getQueryParameter("song")) + 1;
 
     var d = new Date(data.results[s].releaseDate);
-
-    console.log(d.getFullYear());
-    console.log(d.getDate());
-    console.log(d.getDay());
+    var p = new Date(data.results[s].trackTimeMillis);
 
     $("#zay").append( "Song Rank: " + s + '<br><br>' );
     $("#zay").append( "Artist Name: " + data.results[s].artistName + '<br><br>' );
@@ -36,7 +33,9 @@ function success(data) {
     $("#zay").append( "<audio controls src ='" + data.results[s].previewUrl + "'>" + '<br><br>');
     $("#zay").append( '<br><br>' + "Song Status: " + data.results[s].trackExplicitness + '<br><br>');
     $("#zay").append("Genre: " + data.results[s].primaryGenreName + '<br><br>');
-    // $("#zay").append("<a href='" + data.results[s].artistViewUrl + "'>" + "Song Link" + '</a>)";
-    $("#zay").append("Release Date: " +  d.getDay() + "/" + d.getDate() + "/" + d.getFullYear() );
+    $("#zay").append("<a href='" + data.results[s].collectionViewUrl + "'>" + "Album Link" + "</a>" + '<br><br>');
+    $("#zay").append("Release Date: " +  d.getDay() + "/" + d.getDate() + "/" + d.getFullYear() + '<br><br>');
+    $("#zay").append("Track Time: " + p.getMinutes() + ":" + p.getSeconds());
+
 }
 
