@@ -22,7 +22,7 @@ function processResults(){
         $("#tableData").empty();
 
     $.ajax({
-        url: "http://itunes.apple.com/search?term=" + audio[size] + "&limit=" + document.getElementById("resultsType").value,
+        url: "https://itunes.apple.com/search?term=" + audio[size] + "&limit=" + document.getElementById("resultsType").value,
         dataType: "jsonp",
         success: success
     });
